@@ -34,6 +34,16 @@ class MoviesController < ApplicationController
     redirect_to movie_path(@movie)
   end
   
+=begin
+  def update
+    @movie = Movie.find params[:id]
+    @movie.update_attributes!(params[:movie])
+    respond_to do |client_wants|
+      client_wants.html {  redirect_to movie_path(@movie)  } # as before
+      client_wants.xml  {  render :xml => @movie.to_xml    }
+    end
+=end
+  
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
